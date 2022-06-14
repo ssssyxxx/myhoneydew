@@ -106,9 +106,8 @@ input[type="color"]:focus,
     position: relative;
     margin: 20px auto;
 }
-#img-lp1 {
-  background-image: url($WeAudit-intro-02);
-  background-repeat: no-repeat;
+.img-lp1 {
+  // background-image: url($WeAudit-intro-02);
   vertical-align: middle;
   width: 450px;
   height: auto;
