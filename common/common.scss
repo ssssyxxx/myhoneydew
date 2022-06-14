@@ -101,6 +101,9 @@ input[type="color"]:focus,
 .lp2-title-black{
     width: 640px;
     padding-top: 15px;
+    font-family: Karla;
+    font-size: 36px;
+    font-style: Bold;
 }
 .example-box{
     width: 1000px;
@@ -108,6 +111,7 @@ input[type="color"]:focus,
     background: transparent;
     position: relative;
     margin: 20px auto;
+    padding-top: 50.7px;
 }
 
 #img-lp2 {
@@ -465,13 +469,19 @@ summary.select-kit-header.single-select-header.dropdown-select-box-header {
   padding-top: 3em;
 }
 
-.img-lp1 {
-  // background-image: url($WeAudit-intro-02);
+// .img-lp1 {
+//   // background-image: url($WeAudit-intro-02);
+//   vertical-align: middle;
+//   width: 450px;
+//   height: auto;
+// }
+#img-lp1 {
+  background-image: url($WeAudit-intro-02);
+  background-repeat: no-repeat;
   vertical-align: middle;
   width: 450px;
   height: auto;
 }
-
 button a:visited {
   color: #ffffff;
 }
