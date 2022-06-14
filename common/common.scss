@@ -98,12 +98,14 @@ input[type="color"]:focus,
     color: #10724F;
     padding-top: 20px;
 } 
+.karla-font {
+  font-style: Bold;
+  font-family: 'Karla';
+}
 .lp2-title-black{
     width: 640px;
     padding-top: 15px;
-    font-family: Karla;
     font-size: 36px;
-    font-style: Bold;
 }
 .example-box{
     width: 1000px;
@@ -139,7 +141,6 @@ input[type="color"]:focus,
     position: absolute;
     width: 45%;
     height: 100%;
-
 }
 
 .right-example-box{
