@@ -106,7 +106,18 @@ input[type="color"]:focus,
     position: relative;
     margin: 20px auto;
 }
-.img-lp2 {
+#img-lp2 {
+  background-image: url($img-racial-bias);
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  width: 450px;
+  height: 200px;
+  border-radius:2em;
+  padding-top: 15px;
+}
+#img-lp3 {
+  background-image: url($img-gender-bias);
+  background-repeat: no-repeat;
   vertical-align: middle;
   width: 450px;
   height: 200px;
@@ -449,7 +460,9 @@ summary.select-kit-header.single-select-header.dropdown-select-box-header {
   margin-bottom: 3em;
   padding-top: 3em;
 }
-.img-lp1 {
+#img-lp1 {
+  background-image: url($WeAudit-intro-02);
+  background-repeat: no-repeat;
   vertical-align: middle;
   width: 450px;
   height: auto;
