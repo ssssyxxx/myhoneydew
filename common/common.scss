@@ -93,7 +93,7 @@ input[type="color"]:focus,
 .little-green{ 
     font-size:16px;
     color: #10724F;
-    padding-top: 140px;
+    padding-top: 20px;
 } 
 .lp2-title-black{
     width: 640px;
@@ -106,12 +106,7 @@ input[type="color"]:focus,
     position: relative;
     margin: 20px auto;
 }
-.img-lp1 {
-  // background-image: url($WeAudit-intro-02);
-  vertical-align: middle;
-  width: 450px;
-  height: auto;
-}
+
 #img-lp2 {
   background-image: url($img-racial-bias);
   background-repeat: no-repeat;
@@ -465,6 +460,13 @@ summary.select-kit-header.single-select-header.dropdown-select-box-header {
   align-items: center;
   margin-bottom: 3em;
   padding-top: 3em;
+}
+
+.img-lp1 {
+  // background-image: url($WeAudit-intro-02);
+  vertical-align: middle;
+  width: 450px;
+  height: auto;
 }
 
 button a:visited {
