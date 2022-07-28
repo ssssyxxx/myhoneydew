@@ -1,0 +1,148 @@
+<!-- subcategories list above topics -->
+<script type="text/discourse-plugin" version="0.8">
+  const { h } = require('virtual-dom');
+  api.createWidget("show-all-subs", {
+    tagName: "button.btn.btn-default.show-all-subs",
+    html() {
+      return h('span', "View Hypotheses");
+    },
+    click() {
+      const cats = document.querySelectorAll('.no-description:nth-child(n+1)');
+      cats.forEach(cat => {
+        cat.style.display = 'table-row';
+        });
+      const ts = document.querySelectorAll('.topic-list');
+      ts.forEach(t => {
+        t.style.display = 'none';
+        });
+      const hs = document.querySelectorAll('.category-list.with-topics');
+      hs.forEach(h => {
+        h.style.display = 'table';
+        });
+      const cs = document.querySelectorAll('.collapse');
+      cs.forEach(c => {
+        c.style.display = 'inline-flex';
+        });
+      const es = document.querySelectorAll('.expand');
+      es.forEach(e => {
+        e.style.display = 'inline-flex';
+        });
+    }
+  });
+    api.createWidget("hide-all-subs", {
+    tagName: "button.btn.btn-default.hide-all-subs",
+    html() {
+      return h('span', "View Posts");
+    },
+    click() {
+      const cats = document.querySelectorAll('.no-description:nth-child(n+1)');
+      cats.forEach(cat => {
+        cat.style.display = 'none';
+        });
+      const ts = document.querySelectorAll('.topic-list');
+      ts.forEach(t => {
+        t.style.display = 'table';
+        });
+      const hs = document.querySelectorAll('.category-list.with-topics');
+      hs.forEach(h => {
+        h.style.display = 'none';
+        });
+      const cs = document.querySelectorAll('.collapse');
+      cs.forEach(c => {
+        c.style.display = 'none';
+        });
+      const es = document.querySelectorAll('.expand');
+      es.forEach(e => {
+        e.style.display = 'none';
+        });
+    }
+  });
+    api.createWidget("expand", {
+    tagName: "button.btn.btn-default.expand",
+    html() {
+      return h('span', "Expand");
+    },
+    click() {
+      const cats = document.querySelectorAll('.no-description:nth-child(n+1)');
+      cats.forEach(cat => {
+        cat.style.display = 'table-row';
+        });
+    }
+  });
+    api.createWidget("collapse", {
+    tagName: "button.btn.btn-default.collapse",
+    html() {
+      return h('span', "Collapse");
+    },
+    click() {
+      const cats = document.querySelectorAll('.no-description:nth-child(n+4)');
+      cats.forEach(cat => {
+        cat.style.display = 'none';
+        });
+    }
+  });
+</script>
+
+<script type="text/x-handlebars" data-template-name="components/categories-only">
+  {{#if this.categories}}
+    {{#if this.filteredCategories}}
+      <table class="category-list {{if this.showTopics "with-topics"}}">
+        <thead>
+          <tr>
+            <th class="category"><span role="heading" aria-level="2" id="categories-only-category">{{i18n "categories.category"}}</span></th>
+            <th class="topics">{{i18n "categories.topics"}}</th>
+            {{#if this.showTopics}}
+              <th class="latest">{{i18n "categories.latest"}}</th>
+            {{/if}}
+          </tr>
+        </thead>
+        <tbody aria-labelledby="categories-only-category">
+          {{#each this.categories as |category|}}
+            <ParentCategoryRow @category={{category}} @showTopics={{this.showTopics}} />
+          {{/each}}
+        </tbody>
+      </table>
+      {{mount-widget widget="expand"}}
+      {{mount-widget widget="collapse"}}
+    {{/if}}
+  
+    {{#if this.mutedCategories}}
+      <div class="muted-categories">
+        <a href class="muted-categories-link" {{action "toggleShowMuted"}}>
+          <h3 class="muted-categories-heading">{{i18n "categories.muted"}}</h3>
+          {{#if this.mutedToggleIcon}}
+            {{d-icon this.mutedToggleIcon}}
+          {{/if}}
+        </a>
+        <table class="category-list {{if this.showTopics "with-topics"}} {{unless this.showMutedCategories "hidden"}}">
+          <thead>
+            <tr>
+              <th class="category"><span role="heading" aria-level="2" id="categories-only-category-muted">{{i18n "categories.category"}}</span></th>
+              <th class="topics">{{i18n "categories.topics"}}</th>
+              {{#if this.showTopics}}
+                <th class="latest">{{i18n "categories.latest"}}</th>
+              {{/if}}
+            </tr>
+          </thead>
+          <tbody aria-labelledby="categories-only-category-muted">
+            {{#each this.categories as |category|}}
+              <ParentCategoryRow @category={{category}} @showTopics={{this.showTopics}} @listType="muted" />
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    {{/if}}
+  {{/if}}
+  
+  <PluginOutlet @name="below-categories-only" @connectorTagName="div" @args={{hash categories=this.categories showTopics=this.showTopics}} />
+</script> 
+
+<!-- <script type="text/x-handlebars" data-template-name="/connectors/discovery-list-container-top/collapse-btn"> 
+  {{mount-widget widget="expand"}}
+  {{mount-widget widget="collapse"}}
+</script> -->
+
+<script type="text/x-handlebars" data-template-name="/connectors/extra-nav-item/subs-btn"> 
+  {{mount-widget widget="show-all-subs"}}
+  {{mount-widget widget="hide-all-subs"}}
+</script>
